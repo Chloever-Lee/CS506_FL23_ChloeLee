@@ -21,16 +21,16 @@ f = open("News_link.txt", "w")
 f.writelines("\nThis is text file for News- Title & Url\n")
 #for loop to iterate each elements 
 for el in element:
+    title= el.get_text() #titleline would be display w/o tag
+    
     for link in links:
-        title= el.get_text() #titleline would be display w/o tag
-        url = link.find_all('td')[2].a['href']  #to extract http address w/href
-        #assigning to headline as text + url = headline
-        headline= title + "\n" + url + "\n" 
-    print(headline) 
-#to write on the text file
-    for h in range(len(el)):
-        f.write(headline)
+        url = link.find_all('td')[2].a['href']  #to extract http address w/href 
+        f.write(title)
+        f.write("\n")
+        f.write(url)
         f.write('\n')
+    print(title +"\n"+url)
+    print("\n")
 #closing text file
 f.close()
   
